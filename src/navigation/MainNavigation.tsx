@@ -2,21 +2,22 @@ import React from 'react';
 import {TextStyle} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import ListScreen, {IListItem} from './screens/list';
-import {Item} from './item';
-import {ThemeFont} from './components/typography';
+import ProductList, {IProduct} from '../screens/ProductList';
+import Product from '../screens/Product';
+import {ThemeFont} from '../components/styled/typography';
+import {COLORS} from '../assets/constants/colors';
 
 export type RootStackParamList = {
-  ListScreen: undefined;
-  ItemScreen?: IListItem;
+  ProductList: undefined;
+  Product?: IProduct;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
-const Stack = () => {
+const MainNavigation = () => {
   return (
     <RootStack.Navigator
-      initialRouteName="ListScreen"
+      initialRouteName="ProductList"
       screenOptions={{
         headerShadowVisible: false,
         headerBackTitle: '',
@@ -25,21 +26,17 @@ const Stack = () => {
           ...(ThemeFont.medium as Record<string, TextStyle>),
         },
         contentStyle: {
-          backgroundColor: '#eee',
+          backgroundColor: COLORS.middleGray,
         },
       }}>
       <RootStack.Screen
-        name="ListScreen"
-        component={ListScreen}
+        name="ProductList"
+        component={ProductList}
         options={{title: 'Items'}}
       />
-      <RootStack.Screen
-        name="ItemScreen"
-        component={Item}
-        options={{title: 'Item'}}
-      />
+      <RootStack.Screen name="Product" component={Product} />
     </RootStack.Navigator>
   );
 };
 
-export default Stack;
+export default MainNavigation;
