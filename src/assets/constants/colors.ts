@@ -7,4 +7,5 @@ export const COLORS = {
   gray: '#545454',
   middleGray: '#E6E6E6',
   red: '#DA2121',
+  transparentBlack: 'rgba(0,0, 0, 0.05)',
 };

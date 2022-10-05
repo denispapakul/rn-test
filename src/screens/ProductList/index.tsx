@@ -9,7 +9,7 @@ export interface IProduct {
   name: string;
   description: string;
   price: string;
-  salePrice: any;
+  salePrice?: string;
   brand: string;
 }
 

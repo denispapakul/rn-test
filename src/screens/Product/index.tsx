@@ -9,11 +9,11 @@ import {Typography} from '../../components/styled/typography';
 import {DetailsTitle} from '../../components/styled/details-title';
 import {DetailsLine} from '../../components/styled/details-line';
 import {Cart} from '../../components/styled/cart';
+import {Price} from '../../components/Price';
 
 import {faker} from '@faker-js/faker';
 import {RootStackParamList} from '../../navigation/MainNavigation';
 import {getImage} from '../../utils/image';
-import {COLORS} from '../../assets/constants/colors';
 
 // @TODO: mocked values
 const SPEC_1 = faker.color.human();
@@ -52,36 +52,29 @@ const Product: React.FC = () => {
     return <Typography>Loading ...</Typography>;
   }
 
+  const {name, price, salePrice, id, brand, description} = product;
+
   return (
     <>
       <ScrollView>
         <Container style={{height: width}}>
-          <ItemImage source={{uri: getImage(product.id, width)}} />
+          <ItemImage source={{uri: getImage(id, width)}} />
         </Container>
 
         <Container>
           <Typography fontSize={18} weight="semiBold">
-            {product.name}
+            {name}
           </Typography>
-
-          {product.salePrice ? (
-            <Typography fontSize={18} color={COLORS.red}>
-              <ItemDiscountedPrice>SAR {product.price}</ItemDiscountedPrice>
-              {'  '}
-              SAR {product.price}
-            </Typography>
-          ) : (
-            <Typography fontSize={18}>SAR {product.price}</Typography>
-          )}
+          <Price salePrice={salePrice} price={price} />
         </Container>
 
         <Container>
-          <Typography>{product.description}</Typography>
+          <Typography>{description}</Typography>
         </Container>
 
         <Container>
           <DetailsTitle>Details</DetailsTitle>
-          <DetailsLine label="Brand">{product.brand}</DetailsLine>
+          <DetailsLine label="Brand">{brand}</DetailsLine>
           <DetailsLine label="Color">{SPEC_1}</DetailsLine>
           <DetailsLine label="SKU" weight="medium">
             {SPEC_2}
@@ -104,14 +97,5 @@ const ItemImage = styled.Image<{size?: number}>({
   marginVertical: 16,
   borderRadius: 9,
 });
-
-const ItemDiscountedPrice = styled(Typography)({
-  textDecorationLine: 'line-through',
-});
-
-ItemDiscountedPrice.defaultProps = {
-  fontSize: 18,
-  color: 'black',
-};
 
 export default Product;
