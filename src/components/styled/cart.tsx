@@ -7,35 +7,44 @@ import {Container} from './container';
 import {CartQuantity} from './cart-quantity';
 import {Typography} from './typography';
 
-export const Cart: React.FC<any> = ({quantity, update}) => {
+import {COLORS} from '../../assets/constants/colors';
+
+interface ICart {
+  quantity: number;
+  update: (value: number) => number | undefined;
+}
+
+export const Cart: React.FC<ICart> = ({quantity, update}) => {
   const insets = useSafeAreaInsets();
 
   return (
     <CartContainer style={{paddingBottom: Math.max(insets.bottom, 20)}}>
-      <BuyButton
-        onPress={() => Alert.alert('', 'WiP button')}
-        underlayColor="white">
-        <Typography color="white">Buy Now</Typography>
-      </BuyButton>
+      <>
+        <CartQuantity quantity={quantity} update={update} />
 
-      <CartQuantity quantity={quantity} update={update} />
+        <BuyButton
+          onPress={() => Alert.alert('WiP button')}
+          underlayColor={COLORS.white}>
+          <Typography color={COLORS.white}>Buy Now</Typography>
+        </BuyButton>
+      </>
     </CartContainer>
   );
 };
 
 const CartContainer = styled(Container)({
-  backgroundColor: 'white',
-  flexDirection: 'row-reverse',
+  backgroundColor: COLORS.white,
+  flexDirection: 'row',
   borderTopLeftRadius: 16,
   paddingTop: 16,
   borderTopRightRadius: 16,
 });
 
 const BuyButton = styled.TouchableHighlight({
-  backgroundColor: '#73548F',
+  backgroundColor: COLORS.lightViolet,
   paddingVertical: 12,
   paddingHorizontal: 24,
-  borderRadius: 1000,
+  borderRadius: 26,
   maxHeight: 51,
   flex: 2,
   alignItems: 'center',

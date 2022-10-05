@@ -3,17 +3,24 @@ import styled from '@emotion/native';
 
 import {Typography} from './typography';
 
-export const DetailsLine: React.FC<{
-  label?: React.ReactNode;
+interface IDetailsLine {
+  label?: string;
   children: string;
-}> = ({label, children}) => {
+  weight?: string;
+}
+
+export const DetailsLine: React.FC<IDetailsLine> = ({
+  label,
+  children,
+  weight,
+}) => {
   return (
     <DetailsLineContainer>
-      <Typography fontSize={14} style={{marginRight: 16}} weight="medium">
+      <DetailsLineLabel fontSize={14} weight="regular">
         {label}
-      </Typography>
+      </DetailsLineLabel>
 
-      <DetailsLineContent>{children}</DetailsLineContent>
+      <DetailsLineContent weight={weight}>{children}</DetailsLineContent>
     </DetailsLineContainer>
   );
 };
@@ -26,6 +33,10 @@ const DetailsLineContainer = styled.View({
 const DetailsLineContent = styled(Typography)({
   flex: 1,
   textAlign: 'right',
+});
+
+const DetailsLineLabel = styled(Typography)({
+  marginRight: 16,
 });
 
 DetailsLineContent.defaultProps = {

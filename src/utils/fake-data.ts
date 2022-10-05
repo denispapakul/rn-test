@@ -1,8 +1,7 @@
 import {faker} from '@faker-js/faker';
+import {IProduct} from '../screens/ProductList';
 
-import {IListItem} from '../screens/list';
-
-const list_data: IListItem[] = [];
+const list_data: IProduct[] = [];
 
 for (let index = 0; index < 1500; index++) {
   const price = faker.commerce.price();
