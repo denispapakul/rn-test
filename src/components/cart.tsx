@@ -1,12 +1,11 @@
+import React from 'react';
+import {Alert} from 'react-native';
 import styled from '@emotion/native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {Container} from './container';
 import {CartQuantity} from './cart-quantity';
 import {Typography} from './typography';
-
-//
-//
 
 export const Cart: React.FC<any> = ({quantity, update}) => {
   const insets = useSafeAreaInsets();
@@ -23,9 +22,6 @@ export const Cart: React.FC<any> = ({quantity, update}) => {
     </CartContainer>
   );
 };
-
-//
-//
 
 const CartContainer = styled(Container)({
   backgroundColor: 'white',

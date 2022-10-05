@@ -1,9 +1,6 @@
 import styled from '@emotion/native';
 import {Platform, TextStyle} from 'react-native';
 
-//
-//
-
 const isIos = Platform.OS === 'ios';
 
 export const Typography = styled.Text<{

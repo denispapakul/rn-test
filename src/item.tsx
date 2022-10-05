@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Dimensions, ScrollView, Text, View} from 'react-native';
+import {Dimensions, ScrollView} from 'react-native';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import styled from '@emotion/native';
@@ -13,15 +13,10 @@ import {DetailsLine} from './components/details-line';
 import {DetailsTitle} from './components/details-title';
 import {Cart} from './components/cart';
 
-//
-//
-
 const SPEC_1 = faker.color.human();
 const SPEC_2 = faker.vehicle.vin();
 const SPEC_3 = faker.commerce.product();
 const SPEC_4 = faker.datatype.float({min: 0.1, max: 10, precision: 0.1});
-
-//
 
 export const Item = () => {
   const nav =
@@ -39,9 +34,6 @@ export const Item = () => {
   nav.setOptions({
     title: params.name,
   });
-
-  //
-  //
 
   return (
     <React.Fragment>
@@ -82,9 +74,7 @@ export const Item = () => {
           <Typography weight="medium" />
           <Typography weight="medium">Specifications</Typography>
           <DetailsLine label="Type">{SPEC_3}</DetailsLine>
-          <DetailsLine label="Weight">
-            {SPEC_4} kg
-          </DetailsLine>
+          <DetailsLine label="Weight">{SPEC_4 + 'kg'}</DetailsLine>
         </Container>
       </ScrollView>
 

@@ -3,9 +3,6 @@ import styled from '@emotion/native';
 
 import {Typography} from './typography';
 
-//
-//
-
 export const CartQuantity: React.FC<{
   quantity: any;
   update: Dispatch<SetStateAction<number>>;
@@ -32,9 +29,6 @@ export const CartQuantity: React.FC<{
     </QuantityContainer>
   );
 };
-
-//
-//
 
 const QuantityButton = styled.TouchableHighlight({
   alignItems: 'center',

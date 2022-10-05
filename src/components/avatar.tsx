@@ -1,8 +1,4 @@
 import styled from '@emotion/native';
-import {Platform, TextStyle} from 'react-native';
-
-//
-//
 
 export const Avatar = styled.Image({
   width: 56,

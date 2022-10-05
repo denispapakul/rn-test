@@ -1,13 +1,10 @@
 import React from 'react';
+import {TextStyle} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import ListScreen, { IListItem } from './screens/list';
+import ListScreen, {IListItem} from './screens/list';
 import {Item} from './item';
-
 import {ThemeFont} from './components/typography';
-
-//
-//
 
 export type RootStackParamList = {
   ListScreen: undefined;
@@ -19,13 +16,13 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 const Stack = () => {
   return (
     <RootStack.Navigator
-      initialRouteName="ListScreens"
+      initialRouteName="ListScreen"
       screenOptions={{
         headerShadowVisible: false,
         headerBackTitle: '',
         headerTitleStyle: {
           fontSize: 16,
-          ...(ThemeFont.medium as any),
+          ...(ThemeFont.medium as Record<string, TextStyle>),
         },
         contentStyle: {
           backgroundColor: '#eee',
