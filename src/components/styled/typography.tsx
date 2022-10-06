@@ -1,13 +1,12 @@
 import styled from '@emotion/native';
 import {Platform, TextStyle} from 'react-native';
-
-const isIos = Platform.OS === 'ios';
+import {COLORS} from '../../assets/constants/colors';
 
 export const Typography = styled.Text<{
   weight?: keyof typeof ThemeFont;
   fontSize?: TextStyle['fontSize'];
   color?: TextStyle['color'];
-}>(({fontSize = 16, weight = 'regular', color}) => ({
+}>(({fontSize = 16, weight = 'regular', color = COLORS.black}) => ({
   fontSize,
   color,
   lineHeight: fontSize * 1.5,
@@ -17,22 +16,37 @@ export const Typography = styled.Text<{
 export const ThemeFont: Record<string, TextStyle> = {
   light: {
     fontFamily: 'IBMPlexSansArabic-Light',
-    fontWeight: isIos ? '300' : undefined,
+    fontWeight: Platform.select({
+      ios: '300',
+      android: 'normal',
+    }),
   },
   regular: {
     fontFamily: 'IBMPlexSansArabic',
-    fontWeight: isIos ? '400' : undefined,
+    fontWeight: Platform.select({
+      ios: '400',
+      android: 'normal',
+    }),
   },
   medium: {
     fontFamily: 'IBMPlexSansArabic-Medm',
-    fontWeight: isIos ? '500' : undefined,
+    fontWeight: Platform.select({
+      ios: '500',
+      android: 'normal',
+    }),
   },
   semiBold: {
     fontFamily: 'IBMPlexSansArabic-SmBld',
-    fontWeight: isIos ? '600' : undefined,
+    fontWeight: Platform.select({
+      ios: '600',
+      android: 'bold',
+    }),
   },
   bold: {
     fontFamily: 'IBMPlexSansArabic-Bold',
-    fontWeight: isIos ? '700' : undefined,
+    fontWeight: Platform.select({
+      ios: '700',
+      android: 'bold',
+    }),
   },
 };

@@ -18,7 +18,8 @@ const ListScreen = () => (
     data={ListData as IProduct[]}
     keyExtractor={item => item.id}
     renderItem={({item}) => <ProductListItem product={item} />}
-    initialNumToRender={30}
+    initialNumToRender={20}
+    maxToRenderPerBatch={20}
   />
 );
 
